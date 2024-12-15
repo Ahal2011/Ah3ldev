@@ -1,0 +1,52 @@
+internal class Program
+{
+    public List<string> Map = new List<string>() {};
+    private string Number;
+    private int Selction = 0;
+    int i = 0;
+    int While = 0;
+    int Cliff = 0;
+    int Flat = 0;
+    int Hill = 0;
+    public static void Main(String[] args)
+    {
+        Program pr = new Program();
+        Console.WriteLine("How many repeat? ");
+        string Number = Console.ReadLine();
+        int i1 = int.Parse(Number);
+        for (pr.While = 0; pr.While < i1; pr.While++)
+        {
+            Random rn = new Random();
+            int Number1 = rn.Next(0,3);
+            pr.map(Map: Number1.ToString());
+            Console.WriteLine("[Number] " + Number1);
+        }
+        foreach (string Final in pr.Map)
+        {
+            Console.WriteLine(Final + " [How many Cliff] " + pr.Cliff + " [How many Flatt] " + pr.Flat + " [How many Hill] " + pr.Hill);
+        }
+    }
+    public string map(string Map, int i1 = 0)
+    {
+        i1 = int.Parse(Map);
+        if (i1 < 1|| i1 == 1)
+        {
+            this.Map.Add("Flat");
+            Selction = 0;
+            Flat += 1;
+        }
+        if (i1 < 2)
+        {
+            this.Map.Add("Cliff");
+            Selction += 2;
+            Cliff += 1;
+        }
+        else
+        {
+            this.Map.Add("Hill");
+            Selction += 1;
+            Hill += 1;
+        }
+        return Map;
+    }
+}
